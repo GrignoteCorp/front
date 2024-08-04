@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ListView from '../views/ListView.vue'
+import HomeView from '../views/HomeView.vue'
 import AuthentView from '../views/authentification/AuthentView.vue'
 
 const router = createRouter({
@@ -8,7 +8,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: ListView
+      component: HomeView
     },
     {
       path: '/authentification',

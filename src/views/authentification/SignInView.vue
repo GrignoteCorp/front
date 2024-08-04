@@ -3,7 +3,7 @@
 <template>
   <main>
     <h2>Sign in</h2>
-    <form action="/TODO-traitement-page" method="post">
+    <form action="/TODO-traitement-authent" method="post">
       <ul>
         <li>
           <label for="mail">Email&nbsp;:</label>
