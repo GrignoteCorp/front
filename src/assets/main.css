@@ -1,10 +1,16 @@
-:root {
-  --color-primary: #ea4c89;
-  --color-primary-lighter: #f082ac;
-  --color-light: #ffffff;
-  --color-dark: black;
-  --color-dark-lighter: #999;
-  --color-dark-darker: rgb(87, 87, 87) 99;
-  --color-shadow: rgba(149, 157, 165, 0.2);
-  --color-shadow-darker: rgba(85, 90, 95, 0.2);
+main {
+  /* background-color: var(--color-light); TODO chevauche le box shadow du header bizarre */
+  padding: 2rem 0 0 0;
+}
+
+header {
+  background-color: white;
+  box-shadow: lightgray 0px 2px 4px;
+  height: 3rem;
+  padding: 1rem 2rem;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
 }

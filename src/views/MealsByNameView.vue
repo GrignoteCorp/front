@@ -1,0 +1,103 @@
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import store from '@/stores'
+import Meals from '@/components/MealsList.vue'
+
+const route = useRoute()
+const keyword = ref('')
+const meals = computed(() => store.state.searchedMeals)
+
+function searchMeals() {
+  if (keyword.value) {
+    store.dispatch('searchMeals', keyword.value)
+  } else {
+    store.commit('setSearchedMeals', [])
+  }
+}
+
+onMounted(() => {
+  keyword.value = route.params.name
+  if (keyword.value) {
+    searchMeals()
+  }
+})
+</script>
+
+<template>
+  <div>Search by name</div>
+  <form method="post" class="search">
+    <input
+      type="text"
+      id="search"
+      class="input-search"
+      placeholder="Search for Meals"
+      v-model="keyword"
+      @change="searchMeals"
+    />
+    <!-- <button type="submit" class="button-search">Connect</button> -->
+  </form>
+
+  <!-- <div class="meals_result">
+    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
+  </div> -->
+  <Meals :meals="meals" />
+</template>
+
+<style>
+.meals_result {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* flex-wrap: wrap; */
+  gap: 20px;
+  padding: 20px;
+}
+
+.search {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  gap: 10px;
+}
+
+.input-search {
+  height: 3rem;
+  width: 40rem;
+  padding: 0 10px;
+  border: 1px solid var(--color-dark-lighter);
+  border-radius: 5px;
+  box-shadow: var(--color-shadow) 0px 8px 24px;
+}
+
+.input-search:hover,
+.input-search:focus {
+  border-color: var(--color-dark-darker);
+  box-shadow: var(--color-shadow-darker) 0px 8px 24px;
+  outline: none;
+}
+
+.button-search {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 3rem;
+  width: 10rem;
+  padding: 10px 16px;
+  color: var(--color-light);
+  background-color: var(--color-primary);
+  border-radius: 8px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+}
+
+.button-search:hover,
+.button-search:focus {
+  background-color: var(--color-primary-lighter);
+}
+</style>

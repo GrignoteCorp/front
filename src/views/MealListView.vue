@@ -1,6 +1,4 @@
 <script setup></script>
-
 <template>
-  Home page
-  <!-- <CollectionsView /> -->
+  <div>Meal List</div>
 </template>

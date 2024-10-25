@@ -1,0 +1,24 @@
+:root {
+  --color-primary: #ea4c89;
+  --color-primary-lighter: #f082ac;
+  --color-light: #ffffff;
+  --color-dark: black;
+  --color-dark-lighter: #999;
+  --color-dark-darker: rgb(87, 87, 87) 99;
+  --color-shadow: rgba(149, 157, 165, 0.2);
+  --color-shadow-darker: rgba(85, 90, 95, 0.2);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+/* TODO PAS A11Y
+a {
+  color: inherit;
+  text-decoration: none;
+} */
