@@ -1,20 +1,12 @@
 <script setup>
-import axiosClient from '@/axiosClient'
 import { onMounted, computed } from 'vue'
 import { RouterLink } from 'vue-router'
-import { useRoute } from 'vue-router'
-import store from '@/stores'
+import { useMealsStore } from '@/stores/mealsStore'
 
-const route = useRoute()
+const store = useMealsStore()
 
-const ingredients = computed(() => store.state.ingredientsList)
-onMounted(() =>
-  axiosClient.get('list.php?i=list').then(({ data }) => (ingredients.value = data.meals))
-)
-
-onMounted(() => {
-  store.dispatch('searchIngredientsList', route.params.id)
-})
+const ingredients = computed(() => store.$state.ingredientsList)
+onMounted(() => store.searchIngredientsList())
 </script>
 
 <template>

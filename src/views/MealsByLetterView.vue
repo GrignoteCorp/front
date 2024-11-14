@@ -1,15 +1,16 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
-import store from '@/stores'
+import { useMealsStore } from '@/stores/mealsStore'
 import { useRoute } from 'vue-router'
 import Meals from '@/components/MealsList.vue'
 
 const route = useRoute()
+const store = useMealsStore()
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-const meals = computed(() => store.state.mealsByLetter)
+const meals = computed(() => store.$state.mealsByLetter)
 
-watch(route, () => store.dispatch('searchMealsByLetter', route.params.letter))
-onMounted(() => store.dispatch('searchMealsByLetter', route.params.letter))
+watch(route, () => store.searchMealsByLetter(route.params.letter))
+onMounted(() => store.searchMealsByLetter(route.params.letter))
 </script>
 
 <template>

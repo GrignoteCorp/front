@@ -2,14 +2,15 @@
 import YoutubeButton from '@/components/YoutubeButton.vue'
 import { onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import store from '@/stores'
+import { useMealsStore } from '@/stores/mealsStore'
 
 const route = useRoute()
+const store = useMealsStore()
 
-const meal = computed(() => store.state.mealDetails)
+const meal = computed(() => store.$state.mealDetails)
 
 onMounted(() => {
-  store.dispatch('searchMealDetails', route.params.id)
+  store.searchMealDetails(route.params.id)
 })
 </script>
 

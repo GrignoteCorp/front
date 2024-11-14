@@ -1,15 +1,16 @@
 <script setup>
-import store from '@/stores'
+import { useMealsStore } from '@/stores/mealsStore'
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import Meals from '@/components/MealsList.vue'
 
 const route = useRoute()
+const store = useMealsStore()
 
-const meals = computed(() => store.state.mealsByIngredient)
+const meals = computed(() => store.$state.mealsByIngredient)
 
 onMounted(() => {
-  store.dispatch('searchMealsByIngredient', route.params.ingredient)
+  store.searchMealsByIngredient(route.params.ingredient)
 })
 </script>
 

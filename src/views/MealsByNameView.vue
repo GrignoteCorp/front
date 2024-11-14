@@ -1,18 +1,17 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import store from '@/stores'
+import { useMealsStore } from '@/stores/mealsStore'
 import Meals from '@/components/MealsList.vue'
 
+const store = useMealsStore()
 const route = useRoute()
 const keyword = ref('')
-const meals = computed(() => store.state.searchedMeals)
+const meals = computed(() => store.$state.searchedMeals)
 
 function searchMeals() {
   if (keyword.value) {
-    store.dispatch('searchMeals', keyword.value)
-  } else {
-    store.commit('setSearchedMeals', [])
+    store.searchMeals(keyword.value)
   }
 }
 
@@ -35,12 +34,7 @@ onMounted(() => {
       v-model="keyword"
       @change="searchMeals"
     />
-    <!-- <button type="submit" class="button-search">Connect</button> -->
   </form>
-
-  <!-- <div class="meals_result">
-    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
-  </div> -->
   <Meals :meals="meals" />
 </template>
 
@@ -48,7 +42,6 @@ onMounted(() => {
 .meals_result {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  /* flex-wrap: wrap; */
   gap: 20px;
   padding: 20px;
 }
