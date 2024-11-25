@@ -14,13 +14,11 @@ const { meal } = defineProps({
   <div class="meal">
     <RouterLink :to="{ name: 'mealDetails', params: { id: meal.idMeal } }">
       <img :src="meal.strMealThumb" :alt="meal.strMeal" class="meal_image" />
-
-      <h1 class="meal_title">{{ meal.strMeal }}</h1>
-      <!-- <p class="meal_instruction">{{ meal.strInstructions }}</p> -->
-      <div class="meal_links">
-        <!-- <a :href="meal.strYoutube">Youtube</a> -->
-        <YoutubeButton :href="meal.strYoutube">Youtube</YoutubeButton>
-        <!-- <RouterLink to="/">View</RouterLink> -->
+      <div class="meal_details">
+        <h1 class="meal_title">{{ meal.strMeal }}</h1>
+        <div class="meal_links">
+          <YoutubeButton :href="meal.strYoutube">Youtube</YoutubeButton>
+        </div>
       </div>
     </RouterLink>
   </div>
@@ -29,16 +27,31 @@ const { meal } = defineProps({
 <style>
 .meal {
   border-radius: 20px;
-  padding: 10px;
   background-color: white;
   box-shadow:
     0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  overflow: hidden;
+}
+
+.meal:hover img,
+.meal:focus img {
+  transform: scale(1.05);
+  transition: 0.4s ease-out;
 }
 
 .meal_image {
   width: 100%;
+  border-radius: 20px 20px 0 0;
+  /* height: 100%; */
   object-fit: cover;
+}
+
+.meal_details {
+  padding: 10px;
+}
+
+.meal_title {
 }
 
 .meal_links {

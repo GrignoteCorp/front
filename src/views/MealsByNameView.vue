@@ -39,13 +39,6 @@ onMounted(() => {
 </template>
 
 <style>
-.meals_result {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  padding: 20px;
-}
-
 .search {
   display: flex;
   flex-wrap: nowrap;
