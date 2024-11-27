@@ -1,27 +1,26 @@
 <script setup>
-import { computed } from 'vue'
-import { useUserStore } from '@/stores/userStore'
+// import { computed } from 'vue'
+// import { useUserStore } from '@/stores/userStore'
 
-const store = useUserStore()
-const users = computed(() => store.$state.allUsers)
-const user = { name: '', email: '' }
+// const store = useUserStore()
+// const users = computed(() => store.$state.allUsers)
+// const user = { name: '', email: '' }
 
-function searchUsers() {
-  store.searchAllUsers()
-}
+// function searchUsers() {
+//   store.searchAllUsers()
+// }
 
-function addUser() {
-  // console.log(user)
-  store.postUser(user)
-}
+// function addUser() {
+//   // console.log(user)
+//   store.postUser(user)
+// }
 </script>
 
 <template>
   <h1>Enregistrer une recette</h1>
-  <button type="button" @click="searchUsers">Chercher tous les users</button>
-  <pre>{{ users }}</pre>
+  <!--<button type="button" @click="searchUsers">Chercher tous les users</button>
 
-  <form action="" method="post" @submit.prevent="addUser()">
+   <form action="" method="post" @submit.prevent="addUser()">
     <div>
       <label for="name">name :</label>
       <input type="text" name="name" id="name" v-model="user.name" required />
@@ -33,9 +32,9 @@ function addUser() {
     <div>
       <input type="submit" value="submit" />
     </div>
-  </form>
+  </form> -->
 
-  <!--<div class="form">
+  <div class="layout2">
     <form action="" method="post">
       <div>
         <label for="name">name :</label>
@@ -46,7 +45,7 @@ function addUser() {
         <input type="email" name="email" id="email" required />
       </div>
 
-       <div class="grid-3">
+      <div class="grid-3">
         <div class="checkbox">
           <label class="checkbox-wrapper">
             <input type="checkbox" class="checkbox-input" />
@@ -117,14 +116,17 @@ function addUser() {
       <div>
         <input type="submit" value="Subscribe!" />
       </div>
-    </form> 
-  </div>-->
+    </form>
+  </div>
 </template>
 
 <style>
-/* .form {
+/* .layout2 {
   width: 80%;
   margin: auto;
+  background-color: var(--color-light);
+  height: 100rem;
+  padding: 1rem 2rem;
 }
 
 .grid-3 {

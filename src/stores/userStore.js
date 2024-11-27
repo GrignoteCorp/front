@@ -9,8 +9,7 @@ export const useUserStore = defineStore('user', {
   getters: {},
   actions: {
     async searchAllUsers() {
-      //TODO supp le /all
-      fetch(localAPI + '/user/all', {
+      fetch(localAPI + '/user', {
         headers: { 'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*' }
       })
         .then((res) => res.json())
@@ -23,8 +22,6 @@ export const useUserStore = defineStore('user', {
     },
 
     async postUser(user) {
-      console.log(user)
-
       fetch(localAPI + '/user', {
         headers: { 'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*' },
         method: 'POST',

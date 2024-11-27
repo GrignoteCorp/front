@@ -1,8 +1,7 @@
 <script setup>
-// const props = defineProps({
-//   href: String,
-
-// })
+defineProps({
+  href: String
+})
 </script>
 <template>
   <a :href="href" class="button">

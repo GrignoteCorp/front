@@ -3,7 +3,7 @@
 <template>
   <main>
     <h2>Sign in</h2>
-    <form action="/TODO-traitement-authent" method="post">
+    <form action="/TODO-traitement-authent" method="post" class="signForm">
       <ul>
         <li>
           <label for="mail">Email&nbsp;:</label>
@@ -22,7 +22,7 @@
 </template>
 
 <style>
-form {
+/* form {
   margin: 0 auto;
   width: 400px;
   padding: 1em;
@@ -65,5 +65,5 @@ input:focus {
 
 button {
   margin-left: 0.5em;
-}
+} */
 </style>

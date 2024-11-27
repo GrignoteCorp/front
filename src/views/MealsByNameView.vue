@@ -25,16 +25,14 @@ onMounted(() => {
 
 <template>
   <div>Search by name</div>
-  <form method="post" class="search">
-    <input
-      type="text"
-      id="search"
-      class="input-search"
-      placeholder="Search for Meals"
-      v-model="keyword"
-      @change="searchMeals"
-    />
-  </form>
+  <input
+    type="text"
+    id="search"
+    class="input-search"
+    placeholder="Search for Meals"
+    v-model="keyword"
+    @change="searchMeals"
+  />
   <Meals :meals="meals" />
 </template>
 
