@@ -1,7 +1,6 @@
 main {
   background-color: var(--color-light);
   width: 100%;
-  min-width: 100vh;
   height: 80vh;
   margin: auto;
   padding: var(--size-lg);
@@ -14,8 +13,6 @@ header {
   box-shadow: none;
   height: var(--header-size);
   padding: 1rem 2rem;
-  width: 100%;
-  min-width: 100vh;
 }
 
 nav {
