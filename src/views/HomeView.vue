@@ -1,8 +1,3 @@
-<script setup>
-import RecetteForm from '@/views/RecetteForm.vue'
-</script>
+<script setup></script>
 
-<template>
-  <!-- <CollectionsView /> -->
-  <RecetteForm />
-</template>
+<template>Home page</template>

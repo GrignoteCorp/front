@@ -7,10 +7,13 @@ import Meals from '@/components/MealsList.vue'
 const route = useRoute()
 const store = useMealsStore()
 
-const meals = computed(() => store.$state.mealsByIngredient)
+const meals = computed(() => store.$state.mealsByIngredient || [])
 
 onMounted(() => {
-  store.searchMealsByIngredient(route.params.ingredient)
+  if (route.params.ingredient != '') {
+    store.searchMealsByIngredient(route.params.ingredient)
+    console.log(store.$state)
+  }
 })
 </script>
 

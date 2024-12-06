@@ -108,7 +108,7 @@
               <span class="checkbox-icon">
                 <i></i>
               </span>
-              <span class="checkbox-label">Gouté</span>
+              <span class="checkbox-label">Patisserie</span>
             </span>
           </label>
         </div>

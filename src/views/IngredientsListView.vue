@@ -14,7 +14,7 @@ onMounted(() => store.searchIngredientsList())
   <div class="ingredients_list">
     <RouterLink
       v-for="ingredient in ingredients"
-      :to="{ name: 'ByIngredient', params: { ingredient: ingredient.strIngredient } }"
+      :to="{ name: 'MealsByIngredient', params: { ingredient: ingredient.strIngredient } }"
       :key="ingredient.idIngredient"
       class="ingredient_details"
     >

@@ -7,21 +7,26 @@ import Meals from '@/components/MealsList.vue'
 const route = useRoute()
 const store = useMealsStore()
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-const meals = computed(() => store.$state.mealsByLetter)
+const meals = computed(() => store.$state.mealsByLetter || [])
 
 watch(route, () => store.searchMealsByLetter(route.params.letter))
-onMounted(() => store.searchMealsByLetter(route.params.letter))
+
+onMounted(() => {
+  if (route.params.letter) {
+    store.searchMealsByLetter(route.params.letter)
+  }
+})
 </script>
 
 <template>
   <div class="alphabet">
-    <router-link
+    <RouterLink
       :to="{ name: 'byLetter', params: { letter: letter } }"
       v-for="letter in letters"
-      v-bind:key="letter"
+      :key="letter"
     >
       {{ letter }}
-    </router-link>
+    </RouterLink>
   </div>
 
   <Meals :meals="meals" />

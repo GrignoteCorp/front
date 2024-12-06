@@ -28,6 +28,7 @@ nav {
   /* DESKTOP STYLE */
   main {
     width: 60%;
+    height: 100%;
     margin-top: var(--size-sm);
     border-radius: 20px;
   }

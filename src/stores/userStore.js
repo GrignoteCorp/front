@@ -17,7 +17,7 @@ export const useUserStore = defineStore('user', {
           this.allUsers = response
         })
         .catch((error) => {
-          console.log('Looks like there was a problem: \n', error)
+          console.log('Erreur lors du fetch des users : \n', error)
         })
     },
 
@@ -26,6 +26,8 @@ export const useUserStore = defineStore('user', {
         headers: { 'Content-type': 'application/json', 'Access-Control-Allow-Origin': '*' },
         method: 'POST',
         body: JSON.stringify(user)
+      }).catch((error) => {
+        console.log('Erreur lors de la créeation de ce nouvel user : \n', error)
       })
     }
   }
