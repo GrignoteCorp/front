@@ -3,14 +3,10 @@
   <header>
     <nav>
       <RouterLink :to="{ name: 'home' }">Grignotte</RouterLink>
-      <!-- <RouterLink to="/authentification">Connection</RouterLink> -->
       <div class="navigation_links">
-        <!-- <RouterLink :to="{ name: 'byName' }">Chercher un repas</RouterLink>
-        <RouterLink :to="{ name: 'byLetter' }">Chercher un repas par lettre</RouterLink>
-        <RouterLink :to="{ name: 'ingredientsList' }">Chercher un repas par ingrédient</RouterLink> -->
-
         <RouterLink :to="{ name: 'searchMeal' }">Chercher une recette</RouterLink>
         <RouterLink :to="{ name: 'RecetteForm' }">Ajouter une recette</RouterLink>
+        <RouterLink :to="{ name: 'UserForm' }">Ajouter un utilisateur</RouterLink>
       </div>
     </nav>
   </header>
