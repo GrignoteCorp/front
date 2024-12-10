@@ -12,7 +12,6 @@ const meals = computed(() => store.$state.mealsByIngredient || [])
 onMounted(() => {
   if (route.params.ingredient != '') {
     store.searchMealsByIngredient(route.params.ingredient)
-    console.log(store.$state)
   }
 })
 </script>

@@ -10,6 +10,7 @@ import IngredientsListView from '@/views/IngredientsListView.vue'
 import MealDetailsView from '@/views/MealDetailsView.vue'
 import GuestLayout from '@/components/GuestLayout.vue'
 import RecetteForm from '@/views/RecetteForm.vue'
+import UserForm from '@/views/UserForm.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,6 +37,7 @@ const router = createRouter({
           ]
         },
         { path: '/recette/add', name: 'RecetteForm', component: RecetteForm },
+        { path: '/user/add', name: 'UserForm', component: UserForm },
         { path: '/meal/:id', name: 'mealDetails', component: MealDetailsView }
       ]
     },
