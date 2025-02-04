@@ -1,42 +1,31 @@
 <script setup></script>
 <template>
-  <header>
-    <nav>
-      <RouterLink :to="{ name: 'home' }">Grignotte</RouterLink>
-      <div class="navigation_links">
-        <RouterLink :to="{ name: 'searchMeal' }">Chercher une recette</RouterLink>
-        <RouterLink :to="{ name: 'RecetteForm' }">Ajouter une recette</RouterLink>
-        <RouterLink :to="{ name: 'UserForm' }">Ajouter un utilisateur</RouterLink>
-      </div>
+  <header class="bg-white shadow h-16 flex justify-between items-stretch">
+    <RouterLink
+      class="inline-flex items-center h-full px-5 text-orange-500 font-bold"
+      :to="{ name: 'home' }"
+    >
+      <img alt="Logo de Grignotte" src="../assets/cookie.png" id="grignotte_title_img" />
+      <p class="text-4xl m-4">Grignotte</p>
+    </RouterLink>
+    <nav class="flex items-center gap-1">
+      <RouterLink
+        :to="{ name: 'searchMeal' }"
+        class="inline-flex items-center px-2 transition-colors hover:bg-orange-500 hover:text-white text-2xl rounded-lg h-[80%]"
+        >Chercher une recette</RouterLink
+      >
+      <RouterLink
+        :to="{ name: 'RecetteForm' }"
+        class="inline-flex items-center px-2 transition-colors hover:bg-orange-500 hover:text-white text-2xl rounded-lg h-[80%]"
+        >Ajouter une recette</RouterLink
+      >
     </nav>
   </header>
 </template>
 
 <style scoped>
-nav {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-}
-
-.navigation_links {
-  display: flex;
-  justify-content: space-between;
-  gap: 3rem;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  font-size: 1.5rem;
-  padding: 10px;
-}
-
-a:hover,
-a:active {
-  color: var(--color-primary);
-  background-color: white;
-  border-radius: 10px;
-  transition: background-color 0.3s ease-in-out;
+#grignotte_title_img {
+  width: 3rem;
+  height: 3rem;
 }
 </style>

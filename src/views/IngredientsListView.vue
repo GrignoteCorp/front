@@ -10,27 +10,19 @@ onMounted(() => store.searchIngredientsList())
 </script>
 
 <template>
-  <h1>Ingredients</h1>
-  <div class="ingredients_list">
-    <RouterLink
+  <h1 class="text-4xl font-bold mb-4 text-orange-500">Chercher par ingrédient</h1>
+  <div class="px-8">
+    <div
       v-for="ingredient in ingredients"
-      :to="{ name: 'MealsByIngredient', params: { ingredient: ingredient.strIngredient } }"
       :key="ingredient.idIngredient"
-      class="ingredient_details"
+      class="border-solid border-2 px-3 bg-white shadow rounded-md mb-3"
     >
-      <h2>{{ ingredient.strIngredient }}</h2>
-      <p>{{ ingredient.strDescription }}</p>
-    </RouterLink>
+      <RouterLink
+        :to="{ name: 'MealsByIngredient', params: { ingredient: ingredient.strIngredient } }"
+      >
+        <h2 class="text-2xl font-bold mb-2 text-orange-500">{{ ingredient.strIngredient }}</h2>
+        <p>{{ ingredient.strDescription }}</p>
+      </RouterLink>
+    </div>
   </div>
 </template>
-
-<style>
-.ingredients_list {
-  padding: 10px 20px;
-}
-
-.ingredient_details {
-  padding: 10px 20px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-</style>

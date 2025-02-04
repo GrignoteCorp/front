@@ -24,64 +24,29 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>Search by name</div>
-  <input
-    type="text"
-    id="search"
-    class="input-search"
-    placeholder="Search for Meals"
-    v-model="keyword"
-    @change="searchMeals"
-  />
+  <h1 class="text-4xl font-bold mb-4 text-orange-500">Chercher par nom</h1>
+
+  <div class="px-8 flex justify-center items-center w-xl">
+    <input
+      type="text"
+      id="search"
+      class="rounded border-2 bg-white border-gray-200 mb-3 w-full"
+      placeholder="Chercher un repas"
+      v-model="keyword"
+      @change="searchMeals"
+    />
+  </div>
+
   <Meals :meals="meals" />
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <a
+      href="#"
+      @click.prevent="openIngredient(ingredient)"
+      v-for="ingredient of computedIngredients"
+      :key="ingredient.idIngredient"
+      class="block bg-white rounded p-3 mb-3 shadow"
+    >
+      <h3 class="text-2xl font-bold mb-2">{{ ingredient.strIngredient }}</h3>
+    </a>
+  </div>
 </template>
-
-<style>
-.search {
-  display: flex;
-  flex-wrap: nowrap;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  gap: 10px;
-}
-
-.input-search {
-  height: 3rem;
-  width: 40rem;
-  padding: 0 10px;
-  border: 1px solid var(--color-dark-lighter);
-  border-radius: 5px;
-  box-shadow: var(--color-shadow) 0px 8px 24px;
-}
-
-.input-search:hover,
-.input-search:focus {
-  border-color: var(--color-dark-darker);
-  box-shadow: var(--color-shadow-darker) 0px 8px 24px;
-  outline: none;
-}
-
-.button-search {
-  display: inline-block;
-  box-sizing: border-box;
-  height: 3rem;
-  width: 10rem;
-  padding: 10px 16px;
-  color: var(--color-light);
-  background-color: var(--color-primary);
-  border-radius: 8px;
-  border-style: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  text-align: center;
-}
-
-.button-search:hover,
-.button-search:focus {
-  background-color: var(--color-primary-lighter);
-}
-</style>

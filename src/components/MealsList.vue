@@ -11,18 +11,8 @@ const { meals } = defineProps({
 </script>
 
 <template>
-  <div class="meals_result" v-if="meals.length">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8" v-if="meals.length">
     <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
   </div>
-  <div v-else>There is no meal.</div>
+  <p v-else class="flex justify-center text-gray-600 p-8">There is no meal.</p>
 </template>
-
-<style>
-.meals_result {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  place-content: center;
-  gap: 30px;
-  padding: 20px;
-}
-</style>

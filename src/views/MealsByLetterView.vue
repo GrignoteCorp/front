@@ -18,12 +18,15 @@ onMounted(() => {
 })
 </script>
 
-<template>
-  <div class="alphabet">
+<template class="p-8 pb-0">
+  <h1 class="text-4xl font-bold mb-4 text-orange-500">Chercher par lettre</h1>
+
+  <div class="flex justify-center items-center w-xl gap-2">
     <RouterLink
       :to="{ name: 'byLetter', params: { letter: letter } }"
       v-for="letter in letters"
       :key="letter"
+      class="text-xl text-orange-500"
     >
       {{ letter }}
     </RouterLink>
@@ -31,12 +34,3 @@ onMounted(() => {
 
   <Meals :meals="meals" />
 </template>
-
-<style>
-.alphabet {
-  display: flex;
-  gap: 5px;
-  justify-content: center;
-  font-size: 20px;
-}
-</style>
