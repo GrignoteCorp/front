@@ -1,5 +1,6 @@
 <script setup>
 import YoutubeButton from '@/components/YoutubeButton.vue'
+import BacklinkComponent from '@/components/BacklinkComponent.vue'
 import { onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMealsStore } from '@/stores/mealsStore'
@@ -14,11 +15,13 @@ onMounted(() => {
 })
 </script>
 
-<template>
+<template class="pl-8">
   <h1 class="text-4xl font-bold mt-5 mb-2 text-orange-500">{{ meal.strMeal }}</h1>
-  <div class="grid grid-cols-1 sm:grid-cols-2 p-8">
-    <img :src="meal.strMealThumb" :alt="meal.strMeal" class="max-w-[100%]" />
-    <div class="mx-5">
+  <BacklinkComponent />
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 mt-2">
+    <img :src="meal.strMealThumb" :alt="meal.strMeal" class="max-w-[80%] rounded-md" />
+    <div class="mx-2">
       <div class="grid grid-cols-1 sm:grid-cols-3 text-lg py-2">
         <p><strong class="font-bold">Catégorie :</strong> {{ meal.strCategory }}</p>
         <p><strong class="font-bold">Area :</strong> {{ meal.strArea }}</p>
@@ -53,7 +56,7 @@ onMounted(() => {
     </div>
   </div>
 
-  <div class="px-8">
+  <div>
     <div class="my-3">{{ meal.strInstructions }}</div>
 
     <div class="flex justify-center items-center">
