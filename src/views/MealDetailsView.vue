@@ -1,5 +1,6 @@
 <script setup>
 import YoutubeButton from '@/components/YoutubeButton.vue'
+import BacklinkComponent from '@/components/BacklinkComponent.vue'
 import { onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMealsStore } from '@/stores/mealsStore'
@@ -14,58 +15,66 @@ onMounted(() => {
 })
 </script>
 
-<template>
-  <div class="meal_details">
-    <h1>{{ meal.strMeal }}</h1>
-    <img :src="meal.strMealThumb" :alt="meal.strMeal" />
-    <div class="meal_information">
-      <p><strong>Catégorie :</strong> {{ meal.strCategory }}</p>
-      <p><strong>Area :</strong> {{ meal.strArea }}</p>
-      <p><strong>Tags :</strong> {{ meal.strTags }}</p>
-    </div>
-    <div class="meal_instructions">{{ meal.strInstructions }}</div>
-    <div class="meal_ingredients">
-      <div class="meal_ingredients_list">
-        <h2>ingredients :</h2>
-        <ul>
-          <template v-for="(el, index) of new Array(20)" :key="index">
-            <li v-if="meal[`strIngredient${index + 1}`]">
-              {{ index + 1 }}. {{ meal[`strIngredient${index + 1}`] }}
-            </li>
-          </template>
-        </ul>
+<template class="pl-8">
+  <h1 class="text-4xl font-bold mt-5 mb-2 text-orange-500">{{ meal.strMeal }}</h1>
+  <BacklinkComponent />
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 mt-2">
+    <img :src="meal.strMealThumb" :alt="meal.strMeal" class="max-w-[80%] rounded-md" />
+    <div class="mx-2">
+      <div class="grid grid-cols-1 sm:grid-cols-3 text-lg py-2">
+        <p><strong class="font-bold">Catégorie :</strong> {{ meal.strCategory }}</p>
+        <p><strong class="font-bold">Area :</strong> {{ meal.strArea }}</p>
+        <p><strong class="font-bold">Tags :</strong> {{ meal.strTags }}</p>
       </div>
-      <div class="meal_mesures_list">
-        <h2>Mesures :</h2>
-        <ul>
-          <template v-for="(el, index) of new Array(20)" :key="index">
-            <li v-if="meal[`strMeasure${index + 1}`]">
-              {{ index + 1 }}. {{ meal[`strMeasure${index + 1}`] }}
-            </li>
-          </template>
-        </ul>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3">
+        <div>
+          <h2 class="text-2xl font-semibold mb-2">Ingredients :</h2>
+          <ul>
+            <template v-for="(el, index) of new Array(20)" :key="index">
+              <li v-if="meal[`strIngredient${index + 1}`]">
+                {{ index + 1 }}. {{ meal[`strIngredient${index + 1}`] }}
+              </li>
+            </template>
+          </ul>
+        </div>
+
+        <div class="separator"></div>
+
+        <div>
+          <h2 class="text-2xl font-semibold mb-2">Mesures :</h2>
+          <ul>
+            <template v-for="(el, index) of new Array(20)" :key="index">
+              <li v-if="meal[`strMeasure${index + 1}`]">
+                {{ index + 1 }}. {{ meal[`strMeasure${index + 1}`] }}
+              </li>
+            </template>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="meal_links">
+  </div>
+
+  <div>
+    <div class="my-3">{{ meal.strInstructions }}</div>
+
+    <div class="flex justify-center items-center">
       <YoutubeButton :href="meal.strYoutube">View on Youtube</YoutubeButton>
-      <a :href="meal.strSource">View original source</a>
+      <a
+        :href="meal.strSource"
+        class="m-3 px-3 py-2 rounded border-2 border-transparent text-indigo-600 transition-colors"
+        >View original source</a
+      >
     </div>
   </div>
 </template>
 
 <style>
-/* .meal_details {
-} */
-
-.meal_information {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-
-.meal_ingredients {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+.separator {
+  border-left: 2px solid darkgray;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

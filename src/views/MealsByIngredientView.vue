@@ -12,13 +12,14 @@ const meals = computed(() => store.$state.mealsByIngredient || [])
 onMounted(() => {
   if (route.params.ingredient != '') {
     store.searchMealsByIngredient(route.params.ingredient)
+    console.log(store.$state)
   }
 })
 </script>
 
-<template>
-  <h1>Meals</h1>
+<template class="p-8 pb-0">
+  <h1 class="text-4xl font-bold mb-4 text-orange-500">Recette contenant du {{ route.params.ingredient }}</h1>
   <Meals :meals="meals" />
 </template>
 
-<style></style>
+

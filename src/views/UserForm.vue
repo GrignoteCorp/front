@@ -29,5 +29,3 @@ const user = { name: '', email: '' }
     <div v-for="user in users" :key="user.id">{{ user.name }} {{ user.email }}</div>
   </div>
 </template>
-
-<style></style>

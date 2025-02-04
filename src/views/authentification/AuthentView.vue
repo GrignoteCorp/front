@@ -16,5 +16,3 @@ let signup = ref(true)
     <SignUpView v-else-if="signup" />
   </main>
 </template>
-
-<style></style>

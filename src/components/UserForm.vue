@@ -33,5 +33,3 @@ function addUser() {
     </div>
   </form>
 </template>
-
-<style></style>
