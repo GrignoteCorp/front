@@ -10,7 +10,7 @@ const store = useMealsStore()
 const meals = computed(() => store.$state.mealsByIngredient || [])
 
 onMounted(() => {
-  if (route.params.ingredient != '') {
+  if (!!route.params.ingredient) {
     store.searchMealsByIngredient(route.params.ingredient)
   }
 })
@@ -21,4 +21,4 @@ onMounted(() => {
   <Meals :meals="meals" />
 </template>
 
-<style></style>
+<style scoped></style>

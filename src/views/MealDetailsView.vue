@@ -15,7 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="meal_details">
+  <div v-if="meal" class="meal_details">
     <h1>{{ meal.strMeal }}</h1>
     <img :src="meal.strMealThumb" :alt="meal.strMeal" />
     <div class="meal_information">
@@ -26,37 +26,29 @@ onMounted(() => {
     <div class="meal_instructions">{{ meal.strInstructions }}</div>
     <div class="meal_ingredients">
       <div class="meal_ingredients_list">
-        <h2>ingredients :</h2>
+        <h2>Ingrédients :</h2>
         <ul>
-          <template v-for="(el, index) of new Array(20)" :key="index">
+          <template v-for="(_, index) of new Array(20)" :key="index">
             <li v-if="meal[`strIngredient${index + 1}`]">
-              {{ index + 1 }}. {{ meal[`strIngredient${index + 1}`] }}
-            </li>
-          </template>
-        </ul>
-      </div>
-      <div class="meal_mesures_list">
-        <h2>Mesures :</h2>
-        <ul>
-          <template v-for="(el, index) of new Array(20)" :key="index">
-            <li v-if="meal[`strMeasure${index + 1}`]">
-              {{ index + 1 }}. {{ meal[`strMeasure${index + 1}`] }}
+              {{ meal[`strIngredient${index + 1}`] }} — {{ meal[`strMeasure${index + 1}`] }}
             </li>
           </template>
         </ul>
       </div>
     </div>
     <div class="meal_links">
-      <YoutubeButton :href="meal.strYoutube">View on Youtube</YoutubeButton>
-      <a :href="meal.strSource">View original source</a>
+      <YoutubeButton v-if="meal.strYoutube" :href="meal.strYoutube">
+        Voir sur Youtube
+      </YoutubeButton>
+      <a v-if="meal.strSource" :href="meal.strSource" target="_blank" rel="noopener noreferrer">
+        Voir la source originale
+      </a>
     </div>
   </div>
+  <div v-else>Chargement…</div>
 </template>
 
-<style>
-/* .meal_details {
-} */
-
+<style scoped>
 .meal_information {
   display: flex;
   flex-wrap: nowrap;
@@ -64,8 +56,6 @@ onMounted(() => {
 }
 
 .meal_ingredients {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 </style>
