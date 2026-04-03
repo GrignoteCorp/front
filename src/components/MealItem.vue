@@ -16,15 +16,15 @@ const { meal } = defineProps({
       <img :src="meal.strMealThumb" :alt="meal.strMeal" class="meal_image" />
       <div class="meal_details">
         <h1 class="meal_title">{{ meal.strMeal }}</h1>
-        <div class="meal_links">
-          <YoutubeButton :href="meal.strYoutube">Youtube</YoutubeButton>
-        </div>
       </div>
     </RouterLink>
+    <div class="meal_links">
+      <YoutubeButton v-if="meal.strYoutube" :href="meal.strYoutube">Youtube</YoutubeButton>
+    </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 .meal {
   border-radius: 20px;
   background-color: white;

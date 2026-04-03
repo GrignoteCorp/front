@@ -9,8 +9,8 @@ defineProps({
   </a>
 </template>
 
-<style>
+<style scoped>
 .button {
-  width: 10px;
+  width: fit-content;
 }
 </style>
