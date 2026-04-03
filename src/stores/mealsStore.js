@@ -1,21 +1,20 @@
 import { defineStore } from 'pinia'
-import axiosClient from '@/axiosClient'
+import { mealService } from '@/services/mealService'
 
 export const useMealsStore = defineStore('meals', {
   state: () => ({
     searchedMeals: [],
     mealsByLetter: [],
     mealsByIngredient: [],
-    mealDetails: [],
+    mealDetails: null,
     ingredientsList: []
   }),
   getters: {},
   actions: {
     async searchMeals(keyword) {
       try {
-        axiosClient.get(`search.php?s=${keyword}`).then(({ data }) => {
-          this.searchedMeals = data.meals
-        })
+        const { data } = await mealService.searchByName(keyword)
+        this.searchedMeals = data.meals
       } catch (error) {
         console.error('Erreur lors du fetch des meals:', error)
       }
@@ -23,9 +22,8 @@ export const useMealsStore = defineStore('meals', {
 
     async searchMealsByLetter(letter) {
       try {
-        axiosClient.get(`search.php?f=${letter}`).then(({ data }) => {
-          this.mealsByLetter = data.meals
-        })
+        const { data } = await mealService.searchByLetter(letter)
+        this.mealsByLetter = data.meals
       } catch (error) {
         console.error('Erreur lors du fetch des meals:', error)
       }
@@ -33,9 +31,8 @@ export const useMealsStore = defineStore('meals', {
 
     async searchMealsByIngredient(ingredient) {
       try {
-        axiosClient.get(`filter.php?i=${ingredient}`).then(({ data }) => {
-          this.mealsByIngredient = data.meals
-        })
+        const { data } = await mealService.searchByIngredient(ingredient)
+        this.mealsByIngredient = data.meals
       } catch (error) {
         console.error('Erreur lors du fetch des meals:', error)
       }
@@ -43,9 +40,8 @@ export const useMealsStore = defineStore('meals', {
 
     async searchMealDetails(idMeal) {
       try {
-        axiosClient.get(`lookup.php?i=${idMeal}`).then(({ data }) => {
-          this.mealDetails = data.meals[0]
-        })
+        const { data } = await mealService.getDetails(idMeal)
+        this.mealDetails = data.meals[0]
       } catch (error) {
         console.error('Erreur lors du fetch des meals:', error)
       }
@@ -53,9 +49,8 @@ export const useMealsStore = defineStore('meals', {
 
     async searchIngredientsList() {
       try {
-        axiosClient.get(`list.php?i=list`).then(({ data }) => {
-          this.ingredientsList = data.meals
-        })
+        const { data } = await mealService.getIngredientsList()
+        this.ingredientsList = data.meals
       } catch (error) {
         console.error('Erreur lors du fetch des meals:', error)
       }
