@@ -2,13 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 import DefaultLayout from '@/components/DefaultLayout.vue'
 import HomeView from '../views/HomeView.vue'
 import SearchMealView from '@/views/SearchMealView.vue'
-import MealListView from '@/views/MealListView.vue'
 import MealsByName from '@/views/MealsByNameView.vue'
 import MealsByLetterView from '@/views/MealsByLetterView.vue'
 import MealsByIngredientView from '@/views/MealsByIngredientView.vue'
 import IngredientsListView from '@/views/IngredientsListView.vue'
 import MealDetailsView from '@/views/MealDetailsView.vue'
 import GuestLayout from '@/components/GuestLayout.vue'
+import SignInView from '@/views/authentification/SignInView.vue'
+import SignUpView from '@/views/authentification/SignUpView.vue'
 import RecetteForm from '@/views/RecetteForm.vue'
 import UserForm from '@/views/UserForm.vue'
 
@@ -25,7 +26,6 @@ const router = createRouter({
           name: 'searchMeal',
           component: SearchMealView,
           children: [
-            { path: '/letter/:letter', name: 'byLetter', component: MealListView },
             { path: '/by-name/:name?', name: 'byName', component: MealsByName },
             { path: '/by-letter/:letter?', name: 'byLetter', component: MealsByLetterView },
             { path: '/ingredientsList', name: 'ingredientsList', component: IngredientsListView },
@@ -41,7 +41,14 @@ const router = createRouter({
         { path: '/meal/:id', name: 'mealDetails', component: MealDetailsView }
       ]
     },
-    { path: '/auth', component: GuestLayout, children: [] }
+    {
+      path: '/auth',
+      component: GuestLayout,
+      children: [
+        { path: 'sign-in', name: 'signIn', component: SignInView },
+        { path: 'sign-up', name: 'signUp', component: SignUpView }
+      ]
+    }
   ]
 })
 

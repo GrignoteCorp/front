@@ -21,7 +21,7 @@
   </main>
 </template>
 
-<style>
+<style scoped>
 /* form {
   margin: 0 auto;
   width: 400px;

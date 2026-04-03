@@ -7,6 +7,7 @@
         <RouterLink :to="{ name: 'searchMeal' }">Chercher une recette</RouterLink>
         <RouterLink :to="{ name: 'RecetteForm' }">Ajouter une recette</RouterLink>
         <RouterLink :to="{ name: 'UserForm' }">Ajouter un utilisateur</RouterLink>
+        <RouterLink :to="{ name: 'signIn' }">Connexion</RouterLink>
       </div>
     </nav>
   </header>
