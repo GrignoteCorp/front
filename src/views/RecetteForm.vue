@@ -32,7 +32,6 @@ const cookingType = ref(['Four', 'Plaques', 'Sans cuisson', 'Autres'])
           id="title"
           required
           placeholder="Saisissez un titre"
-          value="Test"
           v-model="recipe.title"
         />
       </div>
@@ -149,7 +148,7 @@ const cookingType = ref(['Four', 'Plaques', 'Sans cuisson', 'Autres'])
   </div>
 </template>
 
-<style>
+<style scoped>
 .input_wrapper {
   display: flex;
   gap: 10px;
