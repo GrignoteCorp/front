@@ -24,7 +24,7 @@ onMounted(() => store.searchIngredientsList())
   </div>
 </template>
 
-<style>
+<style scoped>
 .ingredients_list {
   padding: 10px 20px;
 }

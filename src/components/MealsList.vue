@@ -17,7 +17,7 @@ const { meals } = defineProps({
   <div v-else>There is no meal.</div>
 </template>
 
-<style>
+<style scoped>
 .meals_result {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

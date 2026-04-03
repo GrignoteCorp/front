@@ -36,7 +36,7 @@ onMounted(() => {
   <Meals :meals="meals" />
 </template>
 
-<style>
+<style scoped>
 .search {
   display: flex;
   flex-wrap: nowrap;

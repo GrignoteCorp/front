@@ -32,7 +32,7 @@ onMounted(() => {
   <Meals :meals="meals" />
 </template>
 
-<style>
+<style scoped>
 .alphabet {
   display: flex;
   gap: 5px;

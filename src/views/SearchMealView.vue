@@ -16,7 +16,7 @@ import { RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style>
+<style scoped>
 .sub_header {
   background-color: bisque;
   top: calc(var(--size-lg) * -1);
