@@ -1,11 +1,12 @@
 import axios from 'axios'
 import { useNotificationStore } from '@/stores/notificationStore'
 
-const axiosClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL
+const backendClient = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_URL,
+  headers: { 'Content-Type': 'application/json' }
 })
 
-axiosClient.interceptors.response.use(
+backendClient.interceptors.response.use(
   (response) => response,
   (error) => {
     const message = error.response?.data?.message ?? error.message ?? 'Erreur réseau'
@@ -14,4 +15,4 @@ axiosClient.interceptors.response.use(
   }
 )
 
-export default axiosClient
+export default backendClient
