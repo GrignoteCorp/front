@@ -1,60 +1,86 @@
-# Grignotte
+# Grignotte — Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Interface Vue 3 pour la découverte de repas et la gestion de recettes personnalisées.
 
-## Recommended IDE Setup
+## Stack technique
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Vue 3** (Composition API) / **Vite 5**
+- **Vue Router 4** — navigation
+- **Pinia** — gestion d'état
+- **Axios** — requêtes HTTP
+- **Tailwind CSS** — styles
+- **Vitest** — tests unitaires
+- **Playwright** — tests end-to-end
 
-## Customize configuration
+## Prérequis
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Node.js 18+
+- npm
 
-## Project Setup
+## Configuration
 
-```sh
-npm install
+Copier le fichier d'environnement et l'adapter si nécessaire :
+
+```bash
+cp .env.example .env
 ```
 
-### Compile and Hot-Reload for Development
+| Variable            | Valeur par défaut                              | Description                  |
+|---------------------|------------------------------------------------|------------------------------|
+| `VITE_API_BASE_URL` | `https://www.themealdb.com/api/json/v1/1/`     | URL de l'API TheMealDB       |
+| `VITE_BACKEND_URL`  | `http://localhost:8081`                        | URL du backend Grignotte     |
 
-```sh
+## Lancement en développement
+
+```bash
+npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
+L'application est disponible sur `http://localhost:8080`.
 
-```sh
+## Build de production
+
+```bash
 npm run build
+npm run preview   # Pour prévisualiser le build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## Lancement avec Docker
 
-```sh
-npm run test:unit
+```bash
+docker build -t grignotte-front .
+docker run -p 8080:8080 grignotte-front
 ```
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
+## Commandes utiles
 
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-npm run build
-
-# Runs the end-to-end tests
-npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
+```bash
+npm run test:unit   # Tests unitaires (Vitest)
+npm run test:e2e    # Tests end-to-end (Playwright)
+npm run lint        # Lint + auto-fix (ESLint)
+npm run format      # Formatage du code (Prettier)
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Fonctionnalités
 
-```sh
-npm run lint
+- **Découverte de repas** via l'API publique TheMealDB
+  - Recherche par nom
+  - Navigation par lettre
+  - Filtrage par ingrédient
+  - Détail d'un repas (ingrédients, instructions, vidéo)
+- **Authentification** — inscription et connexion (JWT)
+- **Recettes personnalisées** — création et suppression de ses propres recettes
+
+## Structure du projet
+
+```
+src/
+├── views/           # Pages de l'application
+├── components/      # Composants réutilisables
+├── stores/          # État global (Pinia)
+├── services/        # Appels API
+├── router/          # Configuration des routes
+├── axiosClient.js   # Client HTTP TheMealDB
+└── backendClient.js # Client HTTP backend
 ```
